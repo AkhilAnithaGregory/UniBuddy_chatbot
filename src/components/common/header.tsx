@@ -2,14 +2,20 @@ import { BsThreeDots } from "react-icons/bs";
 import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
 import { BiSupport } from "react-icons/bi";
 import { RiDeleteBin5Line } from "react-icons/ri";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSidebar } from "@/lib/context/sidebar-context";
 
 export const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
   const { isSidebarOpen } = useSidebar();
-//Need to add a event to close the menu
- /* useEffect(() => {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.getMonth(); // 10 (November)
+
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  console.log(daysInMonth);
+  //Need to add a event to close the menu
+  /* useEffect(() => {
     if (!showMenu) return; 
     const handleClick = () => {
       alert("body clicked");
@@ -22,7 +28,7 @@ export const Header = () => {
   return (
     <div className="bg-gray-800">
       <div
-        className={`${isSidebarOpen ? "pl-56" : "pl-28"} flex items-center justify-between px-4 py-2 text-white relative transition-all duration-300`}
+        className={`${isSidebarOpen ? "pl-56" : "pl-12"} flex items-center justify-between px-4 py-2 text-white relative transition-all duration-300`}
       >
         <span>UniBuddy</span>
         <div>

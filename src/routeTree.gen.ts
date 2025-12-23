@@ -11,6 +11,15 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SettingsIndexRouteImport } from './routes/settings/index'
+import { Route as UserResourceIndexRouteImport } from './routes/user/resource/index'
+import { Route as UserProfileIndexRouteImport } from './routes/user/profile/index'
+import { Route as UserMoodTrackerIndexRouteImport } from './routes/user/mood-tracker/index'
+import { Route as UserJournalIndexRouteImport } from './routes/user/journal/index'
+import { Route as UserDashboardIndexRouteImport } from './routes/user/dashboard/index'
+import { Route as UserChange_passwordIndexRouteImport } from './routes/user/change_password/index'
+import { Route as SupportTerms_and_conditionsIndexRouteImport } from './routes/support/terms_and_conditions/index'
+import { Route as SupportPrivacy_policyIndexRouteImport } from './routes/support/privacy_policy/index'
+import { Route as UserJournalJournal_detailRouteImport } from './routes/user/journal/$journal_detail'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +31,150 @@ const SettingsIndexRoute = SettingsIndexRouteImport.update({
   path: '/settings/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const UserResourceIndexRoute = UserResourceIndexRouteImport.update({
+  id: '/user/resource/',
+  path: '/user/resource/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UserProfileIndexRoute = UserProfileIndexRouteImport.update({
+  id: '/user/profile/',
+  path: '/user/profile/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UserMoodTrackerIndexRoute = UserMoodTrackerIndexRouteImport.update({
+  id: '/user/mood-tracker/',
+  path: '/user/mood-tracker/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UserJournalIndexRoute = UserJournalIndexRouteImport.update({
+  id: '/user/journal/',
+  path: '/user/journal/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UserDashboardIndexRoute = UserDashboardIndexRouteImport.update({
+  id: '/user/dashboard/',
+  path: '/user/dashboard/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UserChange_passwordIndexRoute =
+  UserChange_passwordIndexRouteImport.update({
+    id: '/user/change_password/',
+    path: '/user/change_password/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SupportTerms_and_conditionsIndexRoute =
+  SupportTerms_and_conditionsIndexRouteImport.update({
+    id: '/support/terms_and_conditions/',
+    path: '/support/terms_and_conditions/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SupportPrivacy_policyIndexRoute =
+  SupportPrivacy_policyIndexRouteImport.update({
+    id: '/support/privacy_policy/',
+    path: '/support/privacy_policy/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const UserJournalJournal_detailRoute =
+  UserJournalJournal_detailRouteImport.update({
+    id: '/user/journal/$journal_detail',
+    path: '/user/journal/$journal_detail',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/settings': typeof SettingsIndexRoute
+  '/user/journal/$journal_detail': typeof UserJournalJournal_detailRoute
+  '/support/privacy_policy': typeof SupportPrivacy_policyIndexRoute
+  '/support/terms_and_conditions': typeof SupportTerms_and_conditionsIndexRoute
+  '/user/change_password': typeof UserChange_passwordIndexRoute
+  '/user/dashboard': typeof UserDashboardIndexRoute
+  '/user/journal': typeof UserJournalIndexRoute
+  '/user/mood-tracker': typeof UserMoodTrackerIndexRoute
+  '/user/profile': typeof UserProfileIndexRoute
+  '/user/resource': typeof UserResourceIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/settings': typeof SettingsIndexRoute
+  '/user/journal/$journal_detail': typeof UserJournalJournal_detailRoute
+  '/support/privacy_policy': typeof SupportPrivacy_policyIndexRoute
+  '/support/terms_and_conditions': typeof SupportTerms_and_conditionsIndexRoute
+  '/user/change_password': typeof UserChange_passwordIndexRoute
+  '/user/dashboard': typeof UserDashboardIndexRoute
+  '/user/journal': typeof UserJournalIndexRoute
+  '/user/mood-tracker': typeof UserMoodTrackerIndexRoute
+  '/user/profile': typeof UserProfileIndexRoute
+  '/user/resource': typeof UserResourceIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/settings/': typeof SettingsIndexRoute
+  '/user/journal/$journal_detail': typeof UserJournalJournal_detailRoute
+  '/support/privacy_policy/': typeof SupportPrivacy_policyIndexRoute
+  '/support/terms_and_conditions/': typeof SupportTerms_and_conditionsIndexRoute
+  '/user/change_password/': typeof UserChange_passwordIndexRoute
+  '/user/dashboard/': typeof UserDashboardIndexRoute
+  '/user/journal/': typeof UserJournalIndexRoute
+  '/user/mood-tracker/': typeof UserMoodTrackerIndexRoute
+  '/user/profile/': typeof UserProfileIndexRoute
+  '/user/resource/': typeof UserResourceIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/settings'
+  fullPaths:
+    | '/'
+    | '/settings'
+    | '/user/journal/$journal_detail'
+    | '/support/privacy_policy'
+    | '/support/terms_and_conditions'
+    | '/user/change_password'
+    | '/user/dashboard'
+    | '/user/journal'
+    | '/user/mood-tracker'
+    | '/user/profile'
+    | '/user/resource'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/settings'
-  id: '__root__' | '/' | '/settings/'
+  to:
+    | '/'
+    | '/settings'
+    | '/user/journal/$journal_detail'
+    | '/support/privacy_policy'
+    | '/support/terms_and_conditions'
+    | '/user/change_password'
+    | '/user/dashboard'
+    | '/user/journal'
+    | '/user/mood-tracker'
+    | '/user/profile'
+    | '/user/resource'
+  id:
+    | '__root__'
+    | '/'
+    | '/settings/'
+    | '/user/journal/$journal_detail'
+    | '/support/privacy_policy/'
+    | '/support/terms_and_conditions/'
+    | '/user/change_password/'
+    | '/user/dashboard/'
+    | '/user/journal/'
+    | '/user/mood-tracker/'
+    | '/user/profile/'
+    | '/user/resource/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SettingsIndexRoute: typeof SettingsIndexRoute
+  UserJournalJournal_detailRoute: typeof UserJournalJournal_detailRoute
+  SupportPrivacy_policyIndexRoute: typeof SupportPrivacy_policyIndexRoute
+  SupportTerms_and_conditionsIndexRoute: typeof SupportTerms_and_conditionsIndexRoute
+  UserChange_passwordIndexRoute: typeof UserChange_passwordIndexRoute
+  UserDashboardIndexRoute: typeof UserDashboardIndexRoute
+  UserJournalIndexRoute: typeof UserJournalIndexRoute
+  UserMoodTrackerIndexRoute: typeof UserMoodTrackerIndexRoute
+  UserProfileIndexRoute: typeof UserProfileIndexRoute
+  UserResourceIndexRoute: typeof UserResourceIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +193,84 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SettingsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/user/resource/': {
+      id: '/user/resource/'
+      path: '/user/resource'
+      fullPath: '/user/resource'
+      preLoaderRoute: typeof UserResourceIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/user/profile/': {
+      id: '/user/profile/'
+      path: '/user/profile'
+      fullPath: '/user/profile'
+      preLoaderRoute: typeof UserProfileIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/user/mood-tracker/': {
+      id: '/user/mood-tracker/'
+      path: '/user/mood-tracker'
+      fullPath: '/user/mood-tracker'
+      preLoaderRoute: typeof UserMoodTrackerIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/user/journal/': {
+      id: '/user/journal/'
+      path: '/user/journal'
+      fullPath: '/user/journal'
+      preLoaderRoute: typeof UserJournalIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/user/dashboard/': {
+      id: '/user/dashboard/'
+      path: '/user/dashboard'
+      fullPath: '/user/dashboard'
+      preLoaderRoute: typeof UserDashboardIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/user/change_password/': {
+      id: '/user/change_password/'
+      path: '/user/change_password'
+      fullPath: '/user/change_password'
+      preLoaderRoute: typeof UserChange_passwordIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/support/terms_and_conditions/': {
+      id: '/support/terms_and_conditions/'
+      path: '/support/terms_and_conditions'
+      fullPath: '/support/terms_and_conditions'
+      preLoaderRoute: typeof SupportTerms_and_conditionsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/support/privacy_policy/': {
+      id: '/support/privacy_policy/'
+      path: '/support/privacy_policy'
+      fullPath: '/support/privacy_policy'
+      preLoaderRoute: typeof SupportPrivacy_policyIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/user/journal/$journal_detail': {
+      id: '/user/journal/$journal_detail'
+      path: '/user/journal/$journal_detail'
+      fullPath: '/user/journal/$journal_detail'
+      preLoaderRoute: typeof UserJournalJournal_detailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SettingsIndexRoute: SettingsIndexRoute,
+  UserJournalJournal_detailRoute: UserJournalJournal_detailRoute,
+  SupportPrivacy_policyIndexRoute: SupportPrivacy_policyIndexRoute,
+  SupportTerms_and_conditionsIndexRoute: SupportTerms_and_conditionsIndexRoute,
+  UserChange_passwordIndexRoute: UserChange_passwordIndexRoute,
+  UserDashboardIndexRoute: UserDashboardIndexRoute,
+  UserJournalIndexRoute: UserJournalIndexRoute,
+  UserMoodTrackerIndexRoute: UserMoodTrackerIndexRoute,
+  UserProfileIndexRoute: UserProfileIndexRoute,
+  UserResourceIndexRoute: UserResourceIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

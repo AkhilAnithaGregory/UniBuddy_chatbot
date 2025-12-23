@@ -3,7 +3,6 @@ import Provider from "@/lib/layout/provider";
 import { Header } from "@/components/common/header";
 import { Footer } from "@/components/common/footer";
 import { Sidebar } from "@/components/common/sidebar";
-import { CookiePopUp } from "@/components/content/cookie";
 
 import "./__root.css";
 
@@ -18,7 +17,6 @@ const RootLayout = () => {
       </div>
       <Footer/>
     </div>
-    <CookiePopUp/>
   </Provider>
 )
 };
