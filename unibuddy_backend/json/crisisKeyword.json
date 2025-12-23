@@ -1,0 +1,67 @@
+{
+    "categories": {
+        "self_harm_suicide": {
+            "keywords": [
+                "suicide",
+                "kill myself",
+                "end my life",
+                "want to die"
+            ],
+            "response": "If you're in crisis, please reach out immediately to a trusted person or hotline.",
+            "resources": [
+                {
+                    "name": "Rat auf Draht (Austria)",
+                    "url": "https://www.rataufdraht.at/",
+                    "phone": "147"
+                },
+                {
+                    "name": "International Directory",
+                    "url": "https://findahelpline.com/"
+                }
+            ]
+        },
+        "violence": {
+            "keywords": [
+                "kill them",
+                "shoot",
+                "attack",
+                "bomb",
+                "stab",
+                "hurt others",
+                "violence"
+            ],
+            "response": "I need to stop here. I cannot provide guidance on harming others. If you're feeling overwhelmed or angry, please talk to someone you trust or a professional who can help you work through these feelings safely."
+        },
+        "distress": {
+            "keywords": [
+                "hopeless",
+                "worthless",
+                "can't go on",
+                "no reason to live",
+                "life is pointless"
+            ],
+            "response": "It sounds like you're going through a very difficult time. I'm not a substitute for professional help, but reaching out to a counselor, therapist, or a trusted friend can make a big difference."
+        },
+        "anxiety": {
+            "keywords": [
+                "panic attack",
+                "anxious",
+                "overwhelmed",
+                "can't breathe",
+                "fear all the time"
+            ],
+            "response": "I'm sorry you're feeling anxious. While I can't provide medical advice, grounding techniques or speaking with a mental health professional can help you manage these feelings."
+        },
+        "depression": {
+            "keywords": [
+                "depressed",
+                "sad all the time",
+                "empty",
+                "low energy",
+                "lost interest",
+                "can't sleep"
+            ],
+            "response": "It sounds like you may be experiencing symptoms of depression. I'm not a medical professional, but talking to a therapist or doctor can help you find the right support."
+        }
+    }
+}
