@@ -9,18 +9,24 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SettingsIndexRouteImport } from './routes/settings/index'
-import { Route as UserResourceIndexRouteImport } from './routes/user/resource/index'
-import { Route as UserProfileIndexRouteImport } from './routes/user/profile/index'
-import { Route as UserMoodTrackerIndexRouteImport } from './routes/user/mood-tracker/index'
-import { Route as UserJournalIndexRouteImport } from './routes/user/journal/index'
-import { Route as UserDashboardIndexRouteImport } from './routes/user/dashboard/index'
-import { Route as UserChange_passwordIndexRouteImport } from './routes/user/change_password/index'
 import { Route as SupportTerms_and_conditionsIndexRouteImport } from './routes/support/terms_and_conditions/index'
 import { Route as SupportPrivacy_policyIndexRouteImport } from './routes/support/privacy_policy/index'
-import { Route as UserJournalJournal_detailRouteImport } from './routes/user/journal/$journal_detail'
+import { Route as AuthSign_upIndexRouteImport } from './routes/auth/sign_up/index'
+import { Route as AuthLoginIndexRouteImport } from './routes/auth/login/index'
+import { Route as AuthenticatedUserProfileIndexRouteImport } from './routes/_authenticated/user/profile/index'
+import { Route as AuthenticatedUserMoodTrackerIndexRouteImport } from './routes/_authenticated/user/mood-tracker/index'
+import { Route as AuthenticatedUserJournalIndexRouteImport } from './routes/_authenticated/user/journal/index'
+import { Route as AuthenticatedUserDashboardIndexRouteImport } from './routes/_authenticated/user/dashboard/index'
+import { Route as AuthenticatedUserChange_passwordIndexRouteImport } from './routes/_authenticated/user/change_password/index'
+import { Route as AuthenticatedUserJournalJournal_detailRouteImport } from './routes/_authenticated/user/journal/$journal_detail'
 
+const AuthenticatedRoute = AuthenticatedRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -31,37 +37,6 @@ const SettingsIndexRoute = SettingsIndexRouteImport.update({
   path: '/settings/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const UserResourceIndexRoute = UserResourceIndexRouteImport.update({
-  id: '/user/resource/',
-  path: '/user/resource/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const UserProfileIndexRoute = UserProfileIndexRouteImport.update({
-  id: '/user/profile/',
-  path: '/user/profile/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const UserMoodTrackerIndexRoute = UserMoodTrackerIndexRouteImport.update({
-  id: '/user/mood-tracker/',
-  path: '/user/mood-tracker/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const UserJournalIndexRoute = UserJournalIndexRouteImport.update({
-  id: '/user/journal/',
-  path: '/user/journal/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const UserDashboardIndexRoute = UserDashboardIndexRouteImport.update({
-  id: '/user/dashboard/',
-  path: '/user/dashboard/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const UserChange_passwordIndexRoute =
-  UserChange_passwordIndexRouteImport.update({
-    id: '/user/change_password/',
-    path: '/user/change_password/',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 const SupportTerms_and_conditionsIndexRoute =
   SupportTerms_and_conditionsIndexRouteImport.update({
     id: '/support/terms_and_conditions/',
@@ -74,111 +49,162 @@ const SupportPrivacy_policyIndexRoute =
     path: '/support/privacy_policy/',
     getParentRoute: () => rootRouteImport,
   } as any)
-const UserJournalJournal_detailRoute =
-  UserJournalJournal_detailRouteImport.update({
+const AuthSign_upIndexRoute = AuthSign_upIndexRouteImport.update({
+  id: '/auth/sign_up/',
+  path: '/auth/sign_up/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthLoginIndexRoute = AuthLoginIndexRouteImport.update({
+  id: '/auth/login/',
+  path: '/auth/login/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedUserProfileIndexRoute =
+  AuthenticatedUserProfileIndexRouteImport.update({
+    id: '/user/profile/',
+    path: '/user/profile/',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedUserMoodTrackerIndexRoute =
+  AuthenticatedUserMoodTrackerIndexRouteImport.update({
+    id: '/user/mood-tracker/',
+    path: '/user/mood-tracker/',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedUserJournalIndexRoute =
+  AuthenticatedUserJournalIndexRouteImport.update({
+    id: '/user/journal/',
+    path: '/user/journal/',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedUserDashboardIndexRoute =
+  AuthenticatedUserDashboardIndexRouteImport.update({
+    id: '/user/dashboard/',
+    path: '/user/dashboard/',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedUserChange_passwordIndexRoute =
+  AuthenticatedUserChange_passwordIndexRouteImport.update({
+    id: '/user/change_password/',
+    path: '/user/change_password/',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedUserJournalJournal_detailRoute =
+  AuthenticatedUserJournalJournal_detailRouteImport.update({
     id: '/user/journal/$journal_detail',
     path: '/user/journal/$journal_detail',
-    getParentRoute: () => rootRouteImport,
+    getParentRoute: () => AuthenticatedRoute,
   } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/settings': typeof SettingsIndexRoute
-  '/user/journal/$journal_detail': typeof UserJournalJournal_detailRoute
+  '/auth/login': typeof AuthLoginIndexRoute
+  '/auth/sign_up': typeof AuthSign_upIndexRoute
   '/support/privacy_policy': typeof SupportPrivacy_policyIndexRoute
   '/support/terms_and_conditions': typeof SupportTerms_and_conditionsIndexRoute
-  '/user/change_password': typeof UserChange_passwordIndexRoute
-  '/user/dashboard': typeof UserDashboardIndexRoute
-  '/user/journal': typeof UserJournalIndexRoute
-  '/user/mood-tracker': typeof UserMoodTrackerIndexRoute
-  '/user/profile': typeof UserProfileIndexRoute
-  '/user/resource': typeof UserResourceIndexRoute
+  '/user/journal/$journal_detail': typeof AuthenticatedUserJournalJournal_detailRoute
+  '/user/change_password': typeof AuthenticatedUserChange_passwordIndexRoute
+  '/user/dashboard': typeof AuthenticatedUserDashboardIndexRoute
+  '/user/journal': typeof AuthenticatedUserJournalIndexRoute
+  '/user/mood-tracker': typeof AuthenticatedUserMoodTrackerIndexRoute
+  '/user/profile': typeof AuthenticatedUserProfileIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/settings': typeof SettingsIndexRoute
-  '/user/journal/$journal_detail': typeof UserJournalJournal_detailRoute
+  '/auth/login': typeof AuthLoginIndexRoute
+  '/auth/sign_up': typeof AuthSign_upIndexRoute
   '/support/privacy_policy': typeof SupportPrivacy_policyIndexRoute
   '/support/terms_and_conditions': typeof SupportTerms_and_conditionsIndexRoute
-  '/user/change_password': typeof UserChange_passwordIndexRoute
-  '/user/dashboard': typeof UserDashboardIndexRoute
-  '/user/journal': typeof UserJournalIndexRoute
-  '/user/mood-tracker': typeof UserMoodTrackerIndexRoute
-  '/user/profile': typeof UserProfileIndexRoute
-  '/user/resource': typeof UserResourceIndexRoute
+  '/user/journal/$journal_detail': typeof AuthenticatedUserJournalJournal_detailRoute
+  '/user/change_password': typeof AuthenticatedUserChange_passwordIndexRoute
+  '/user/dashboard': typeof AuthenticatedUserDashboardIndexRoute
+  '/user/journal': typeof AuthenticatedUserJournalIndexRoute
+  '/user/mood-tracker': typeof AuthenticatedUserMoodTrackerIndexRoute
+  '/user/profile': typeof AuthenticatedUserProfileIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteWithChildren
   '/settings/': typeof SettingsIndexRoute
-  '/user/journal/$journal_detail': typeof UserJournalJournal_detailRoute
+  '/auth/login/': typeof AuthLoginIndexRoute
+  '/auth/sign_up/': typeof AuthSign_upIndexRoute
   '/support/privacy_policy/': typeof SupportPrivacy_policyIndexRoute
   '/support/terms_and_conditions/': typeof SupportTerms_and_conditionsIndexRoute
-  '/user/change_password/': typeof UserChange_passwordIndexRoute
-  '/user/dashboard/': typeof UserDashboardIndexRoute
-  '/user/journal/': typeof UserJournalIndexRoute
-  '/user/mood-tracker/': typeof UserMoodTrackerIndexRoute
-  '/user/profile/': typeof UserProfileIndexRoute
-  '/user/resource/': typeof UserResourceIndexRoute
+  '/_authenticated/user/journal/$journal_detail': typeof AuthenticatedUserJournalJournal_detailRoute
+  '/_authenticated/user/change_password/': typeof AuthenticatedUserChange_passwordIndexRoute
+  '/_authenticated/user/dashboard/': typeof AuthenticatedUserDashboardIndexRoute
+  '/_authenticated/user/journal/': typeof AuthenticatedUserJournalIndexRoute
+  '/_authenticated/user/mood-tracker/': typeof AuthenticatedUserMoodTrackerIndexRoute
+  '/_authenticated/user/profile/': typeof AuthenticatedUserProfileIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/settings'
-    | '/user/journal/$journal_detail'
+    | '/auth/login'
+    | '/auth/sign_up'
     | '/support/privacy_policy'
     | '/support/terms_and_conditions'
+    | '/user/journal/$journal_detail'
     | '/user/change_password'
     | '/user/dashboard'
     | '/user/journal'
     | '/user/mood-tracker'
     | '/user/profile'
-    | '/user/resource'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/settings'
-    | '/user/journal/$journal_detail'
+    | '/auth/login'
+    | '/auth/sign_up'
     | '/support/privacy_policy'
     | '/support/terms_and_conditions'
+    | '/user/journal/$journal_detail'
     | '/user/change_password'
     | '/user/dashboard'
     | '/user/journal'
     | '/user/mood-tracker'
     | '/user/profile'
-    | '/user/resource'
   id:
     | '__root__'
     | '/'
+    | '/_authenticated'
     | '/settings/'
-    | '/user/journal/$journal_detail'
+    | '/auth/login/'
+    | '/auth/sign_up/'
     | '/support/privacy_policy/'
     | '/support/terms_and_conditions/'
-    | '/user/change_password/'
-    | '/user/dashboard/'
-    | '/user/journal/'
-    | '/user/mood-tracker/'
-    | '/user/profile/'
-    | '/user/resource/'
+    | '/_authenticated/user/journal/$journal_detail'
+    | '/_authenticated/user/change_password/'
+    | '/_authenticated/user/dashboard/'
+    | '/_authenticated/user/journal/'
+    | '/_authenticated/user/mood-tracker/'
+    | '/_authenticated/user/profile/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRoute: typeof AuthenticatedRouteWithChildren
   SettingsIndexRoute: typeof SettingsIndexRoute
-  UserJournalJournal_detailRoute: typeof UserJournalJournal_detailRoute
+  AuthLoginIndexRoute: typeof AuthLoginIndexRoute
+  AuthSign_upIndexRoute: typeof AuthSign_upIndexRoute
   SupportPrivacy_policyIndexRoute: typeof SupportPrivacy_policyIndexRoute
   SupportTerms_and_conditionsIndexRoute: typeof SupportTerms_and_conditionsIndexRoute
-  UserChange_passwordIndexRoute: typeof UserChange_passwordIndexRoute
-  UserDashboardIndexRoute: typeof UserDashboardIndexRoute
-  UserJournalIndexRoute: typeof UserJournalIndexRoute
-  UserMoodTrackerIndexRoute: typeof UserMoodTrackerIndexRoute
-  UserProfileIndexRoute: typeof UserProfileIndexRoute
-  UserResourceIndexRoute: typeof UserResourceIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof AuthenticatedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -191,48 +217,6 @@ declare module '@tanstack/react-router' {
       path: '/settings'
       fullPath: '/settings'
       preLoaderRoute: typeof SettingsIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/user/resource/': {
-      id: '/user/resource/'
-      path: '/user/resource'
-      fullPath: '/user/resource'
-      preLoaderRoute: typeof UserResourceIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/user/profile/': {
-      id: '/user/profile/'
-      path: '/user/profile'
-      fullPath: '/user/profile'
-      preLoaderRoute: typeof UserProfileIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/user/mood-tracker/': {
-      id: '/user/mood-tracker/'
-      path: '/user/mood-tracker'
-      fullPath: '/user/mood-tracker'
-      preLoaderRoute: typeof UserMoodTrackerIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/user/journal/': {
-      id: '/user/journal/'
-      path: '/user/journal'
-      fullPath: '/user/journal'
-      preLoaderRoute: typeof UserJournalIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/user/dashboard/': {
-      id: '/user/dashboard/'
-      path: '/user/dashboard'
-      fullPath: '/user/dashboard'
-      preLoaderRoute: typeof UserDashboardIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/user/change_password/': {
-      id: '/user/change_password/'
-      path: '/user/change_password'
-      fullPath: '/user/change_password'
-      preLoaderRoute: typeof UserChange_passwordIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/support/terms_and_conditions/': {
@@ -249,28 +233,98 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SupportPrivacy_policyIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/user/journal/$journal_detail': {
-      id: '/user/journal/$journal_detail'
+    '/auth/sign_up/': {
+      id: '/auth/sign_up/'
+      path: '/auth/sign_up'
+      fullPath: '/auth/sign_up'
+      preLoaderRoute: typeof AuthSign_upIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/login/': {
+      id: '/auth/login/'
+      path: '/auth/login'
+      fullPath: '/auth/login'
+      preLoaderRoute: typeof AuthLoginIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/user/profile/': {
+      id: '/_authenticated/user/profile/'
+      path: '/user/profile'
+      fullPath: '/user/profile'
+      preLoaderRoute: typeof AuthenticatedUserProfileIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/user/mood-tracker/': {
+      id: '/_authenticated/user/mood-tracker/'
+      path: '/user/mood-tracker'
+      fullPath: '/user/mood-tracker'
+      preLoaderRoute: typeof AuthenticatedUserMoodTrackerIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/user/journal/': {
+      id: '/_authenticated/user/journal/'
+      path: '/user/journal'
+      fullPath: '/user/journal'
+      preLoaderRoute: typeof AuthenticatedUserJournalIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/user/dashboard/': {
+      id: '/_authenticated/user/dashboard/'
+      path: '/user/dashboard'
+      fullPath: '/user/dashboard'
+      preLoaderRoute: typeof AuthenticatedUserDashboardIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/user/change_password/': {
+      id: '/_authenticated/user/change_password/'
+      path: '/user/change_password'
+      fullPath: '/user/change_password'
+      preLoaderRoute: typeof AuthenticatedUserChange_passwordIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/user/journal/$journal_detail': {
+      id: '/_authenticated/user/journal/$journal_detail'
       path: '/user/journal/$journal_detail'
       fullPath: '/user/journal/$journal_detail'
-      preLoaderRoute: typeof UserJournalJournal_detailRouteImport
-      parentRoute: typeof rootRouteImport
+      preLoaderRoute: typeof AuthenticatedUserJournalJournal_detailRouteImport
+      parentRoute: typeof AuthenticatedRoute
     }
   }
 }
 
+interface AuthenticatedRouteChildren {
+  AuthenticatedUserJournalJournal_detailRoute: typeof AuthenticatedUserJournalJournal_detailRoute
+  AuthenticatedUserChange_passwordIndexRoute: typeof AuthenticatedUserChange_passwordIndexRoute
+  AuthenticatedUserDashboardIndexRoute: typeof AuthenticatedUserDashboardIndexRoute
+  AuthenticatedUserJournalIndexRoute: typeof AuthenticatedUserJournalIndexRoute
+  AuthenticatedUserMoodTrackerIndexRoute: typeof AuthenticatedUserMoodTrackerIndexRoute
+  AuthenticatedUserProfileIndexRoute: typeof AuthenticatedUserProfileIndexRoute
+}
+
+const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
+  AuthenticatedUserJournalJournal_detailRoute:
+    AuthenticatedUserJournalJournal_detailRoute,
+  AuthenticatedUserChange_passwordIndexRoute:
+    AuthenticatedUserChange_passwordIndexRoute,
+  AuthenticatedUserDashboardIndexRoute: AuthenticatedUserDashboardIndexRoute,
+  AuthenticatedUserJournalIndexRoute: AuthenticatedUserJournalIndexRoute,
+  AuthenticatedUserMoodTrackerIndexRoute:
+    AuthenticatedUserMoodTrackerIndexRoute,
+  AuthenticatedUserProfileIndexRoute: AuthenticatedUserProfileIndexRoute,
+}
+
+const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
+  AuthenticatedRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRoute: AuthenticatedRouteWithChildren,
   SettingsIndexRoute: SettingsIndexRoute,
-  UserJournalJournal_detailRoute: UserJournalJournal_detailRoute,
+  AuthLoginIndexRoute: AuthLoginIndexRoute,
+  AuthSign_upIndexRoute: AuthSign_upIndexRoute,
   SupportPrivacy_policyIndexRoute: SupportPrivacy_policyIndexRoute,
   SupportTerms_and_conditionsIndexRoute: SupportTerms_and_conditionsIndexRoute,
-  UserChange_passwordIndexRoute: UserChange_passwordIndexRoute,
-  UserDashboardIndexRoute: UserDashboardIndexRoute,
-  UserJournalIndexRoute: UserJournalIndexRoute,
-  UserMoodTrackerIndexRoute: UserMoodTrackerIndexRoute,
-  UserProfileIndexRoute: UserProfileIndexRoute,
-  UserResourceIndexRoute: UserResourceIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

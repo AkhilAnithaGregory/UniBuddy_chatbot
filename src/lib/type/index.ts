@@ -24,6 +24,6 @@ export type JournalType = {
 }
 
 export type ChatType = {
-  conversatoinId: string,
+  conversationId: string,
   message: string,
 }

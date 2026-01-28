@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { UserLayout } from "@/lib/layout/userLayout";
 import { ModeToggle } from "@/components/ui/mode-toggle";
-import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { RemoveDataPopUp } from "@/components/content/removeDataPopUp";
 import { Button } from "@/components/ui/button";
@@ -25,14 +24,10 @@ function RouteComponent() {
             <Label htmlFor="toggle">Enable Dark Theme</Label>
             <ModeToggle />
           </li>
-          <li className="flex items-center justify-between">
+         {/*  <li className="flex items-center justify-between">
             <Label htmlFor="email_notification">Email Notifications</Label>
             <Switch id="email_notification" />
-          </li>
-          <li className="flex items-center justify-between">
-            <Label htmlFor="reminder_notification">Reminer Notifications</Label>
-            <Switch id="reminder_notification" />
-          </li>
+          </li> */}
         </ul>
       </div>
       <div>
@@ -41,9 +36,9 @@ function RouteComponent() {
           <li className="flex items-center justify-between">
            <Link to="/user/change_password">Change Password</Link>
           </li>
-          <li className="flex items-center justify-between">
+         {/*  <li className="flex items-center justify-between">
             <Button variant='secondary' onClick={() => { setOpen(true); setModalType('clear'); }}>Clear Chat History</Button>
-          </li>
+          </li> */}
           <li className="flex items-center justify-between">
             <Button variant='destructive' onClick={() => { setOpen(true); setModalType('delete'); }}>Delete Account</Button>
           </li>

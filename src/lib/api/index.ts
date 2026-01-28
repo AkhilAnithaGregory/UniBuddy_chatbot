@@ -19,6 +19,23 @@ export async function LoginUser(data: LoginType) {
   return response.json();
 }
 
+export async function GetUser() {
+  const response = await fetch(`${BASE_URL}/api/users/getUser`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${useAuthStore.getState().token}`,
+    },
+  });
+
+  if (!response.ok) {
+    const Error = await response.json();
+    throw new Error(Error.message || "Failed to fetch data");
+  }
+
+  return response.json();
+}
+
 export async function CreateUser(data: RegisterType) {
   const response = await fetch(`${BASE_URL}/api/users/create`, {
     method: "POST",
@@ -58,6 +75,7 @@ export async function ChangePassword(data: UpdatePasswordType) {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
+       Authorization: `Bearer ${useAuthStore.getState().token}`,
     },
     body: JSON.stringify(data),
   });
@@ -65,6 +83,23 @@ export async function ChangePassword(data: UpdatePasswordType) {
   if (!response.ok) {
     const loginError = await response.json();
     throw new Error(loginError.message || "Failed to fetch data");
+  }
+
+  return response.json();
+}
+
+export async function DeleteUser() {
+  const response = await fetch(`${BASE_URL}/api/users`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${useAuthStore.getState().token}`,
+    },
+  });
+
+  if (!response.ok) {
+    const Error = await response.json();
+    throw new Error(Error.message || "Failed to fetch data");
   }
 
   return response.json();
@@ -100,7 +135,6 @@ export async function MarkDailyCheckin() {
     const Error = await response.json();
     throw new Error(Error.message || "Failed to fetch data");
   }
-
   return response.json();
 }
 
@@ -118,7 +152,6 @@ export async function CreateJournal(data: JournalType) {
     const Error = await response.json();
     throw new Error(Error.message || "Failed to fetch data");
   }
-
   return response.json();
 }
 
@@ -192,21 +225,26 @@ export async function UpdateUserJournal(data: JournalType, journalId : string) {
 }
 
 export async function SendChat(data: ChatType) {
-  const response = await fetch(`${BASE_URL}/api/chat`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${useAuthStore.getState().token}`,
-    },
-    body: JSON.stringify(data)
-  });
+  try {
+    const response = await fetch(`${BASE_URL}/api/chat`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${useAuthStore.getState().token}`,
+      },
+      body: JSON.stringify(data)
+    });
+console.log("response",response)
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || "Failed to fetch data");
+    }
 
-  if (!response.ok) {
-    const Error = await response.json();
-    throw new Error(Error.message || "Failed to fetch data");
+    return await response.json();
+  } catch (error) {
+    console.error("error",error);
+    throw error;
   }
-
-  return response.json();
 }
 
 export async function GetChatById(chatId: string) {

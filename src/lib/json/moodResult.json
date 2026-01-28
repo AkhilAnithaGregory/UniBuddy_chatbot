@@ -1,0 +1,42 @@
+{
+    "1": {
+        "image": "/elements/1.png",
+        "messages": [
+            "You’re feeling quite stressed today 💙 You’re not alone.",
+            "It might be a heavy day—support can really help.",
+            "Take a deep breath. Small steps matter 🌊"
+        ]
+    },
+    "2": {
+        "image": "/elements/2.png",
+        "messages": [
+            "You seem a bit low today 😔 Take things gently.",
+            "It’s okay to slow down and take care of yourself.",
+            "Rough days happen—be kind to yourself 💙"
+        ]
+    },
+    "3": {
+        "image": "/elements/3.png",
+        "messages": [
+            "You’re feeling okay 😐 A calm, steady day.",
+            "Not too high, not too low—just balanced.",
+            "A neutral mood can be a good reset point 🌱"
+        ]
+    },
+    "4": {
+        "image": "/elements/4.png",
+        "messages": [
+            "You’re feeling pretty good 😊 Things are going well.",
+            "A positive and balanced mood today 🌤️",
+            "You’re doing alright—keep going!"
+        ]
+    },
+    "5": {
+        "image": "/elements/5.png",
+        "messages": [
+            "You’re feeling amazing today 🌟 Keep riding this positive wave!",
+            "High energy and great vibes today 😄 Enjoy the moment!",
+            "You seem to be in a really good place emotionally today 💛"
+        ]
+    }
+}
